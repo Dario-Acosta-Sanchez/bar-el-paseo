@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Bar El Paseo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Concepto: el paseo como escenario. Fotos a sangre del Paseo de Santa Marina, texto grande sobre ellas,
+   bandas de color verde persiana y albero como en la carta, y una cenefa de azulejo que hace de firma. */
+:root{
+  --cal:#F3F5EF; --papel:#FFFFFF; --tinta:#13231B; --tinta-2:#4D5D55;
+  --persiana:#17402F; --sobre:#F3F5EF; --albero:#B87A10; --albero-vivo:#E7A73A; --azulejo:#1D4F73; --linea:#D5DDD6;
+  --display:"Bricolage Grotesque","Arial Narrow",Arial,sans-serif;
+  --texto:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--cal:#0E1713;--papel:#16221C;--tinta:#E8EEE8;--tinta-2:#A2B1A8;--persiana:#0F2A1F;--sobre:#E8EEE8;--albero:#E7A73A;--azulejo:#86B9DA;--linea:#28382F;color-scheme:dark}
+}
+:root[data-theme="dark"]{--cal:#0E1713;--papel:#16221C;--tinta:#E8EEE8;--tinta-2:#A2B1A8;--persiana:#0F2A1F;--sobre:#E8EEE8;--albero:#E7A73A;--azulejo:#86B9DA;--linea:#28382F;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--cal);color:var(--tinta);font-family:var(--texto);font-size:17px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--persiana)}
+h1,h2,h3,p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--albero-vivo);outline-offset:3px}
+.wrap{max-width:1160px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;font-weight:700;color:var(--albero)}
+.cenefa{height:16px;background:conic-gradient(from 45deg,var(--azulejo) 0 25%,var(--cal) 0 50%,var(--albero-vivo) 0 75%,var(--cal) 0) 0 0/16px 16px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:700 1rem var(--texto);text-decoration:none;border-radius:999px;padding:13px 22px;border:0;cursor:pointer}
+.btn.a{background:var(--albero-vivo);color:#1E1402}
+.btn.b{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.75)}
+.btn.c{background:var(--persiana);color:var(--sobre)}
+
+/* Barra */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--persiana);color:var(--sobre)}
+.top .wrap{display:flex;align-items:center;gap:12px;padding-block:10px}
+.logo{font-family:var(--display);font-weight:800;font-size:1.3rem;text-decoration:none;margin-right:auto;letter-spacing:-.01em}
+.logo span{color:var(--albero-vivo)}
+.top nav{display:flex;gap:4px}
+.top nav a{text-decoration:none;font-weight:600;font-size:.92rem;padding:8px 12px;border-radius:999px;opacity:.85}
+.top nav a:hover{opacity:1;background:rgba(255,255,255,.08)}
+@media (max-width:620px){.top nav{display:none}}
+.top .btn{padding:9px 16px;font-size:.9rem}
+
+/* Hero */
+.hero{position:relative;min-height:min(86vh,760px);display:flex;align-items:flex-end;color:#fff;background:#1b2a22}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,20,15,.15) 0%,rgba(10,20,15,.1) 40%,rgba(10,20,15,.82) 100%)}
+.hero .wrap{position:relative;z-index:1;padding-block:120px 56px;display:flex;flex-direction:column;gap:18px;width:100%}
+.hero .eyebrow{color:var(--albero-vivo)}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(4rem,17vw,11rem);line-height:.82;letter-spacing:-.035em;text-wrap:balance}
+.hero p{font-size:clamp(1.1rem,2.4vw,1.4rem);max-width:34rem;opacity:.95}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+
+/* Frase */
+.frase .wrap{padding-block:64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;align-items:end}
+.frase h2{font-family:var(--display);font-weight:800;font-size:clamp(2.1rem,5.4vw,3.6rem);line-height:.98;letter-spacing:-.02em;text-wrap:balance}
+.frase h2 em{font-style:normal;color:var(--albero)}
+.frase p{color:var(--tinta-2);font-size:1.1rem;max-width:32rem}
+
+/* Momentos: mosaico de fotos */
+.momentos{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:120px;gap:10px}
+.m{position:relative;overflow:hidden;border-radius:6px;background:var(--persiana);color:#fff;min-width:0}
+.m img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.m:hover img{transform:scale(1.04)}
+.m::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(8,16,12,.78))}
+.m div{position:absolute;left:16px;right:16px;bottom:14px;z-index:1}
+.m h3{font-family:var(--display);font-weight:800;font-size:clamp(1.4rem,2.6vw,2rem);line-height:1}
+.m p{font-size:.95rem;color:#fff;opacity:.9}
+.m1{grid-column:span 7;grid-row:span 3}.m2{grid-column:span 5;grid-row:span 2}.m3{grid-column:span 5;grid-row:span 2}
+.m4{grid-column:span 4;grid-row:span 2}.m5{grid-column:span 3;grid-row:span 2}
+@media (max-width:760px){.momentos{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}.m1{grid-column:span 2;grid-row:span 2}.m2,.m3,.m4,.m5{grid-column:span 1;grid-row:span 1}}
+@media (max-width:420px){.m h3{font-size:1.15rem}.m p{display:none}}
+
+/* Platos */
+.platos{background:var(--persiana);color:var(--sobre)}
+.platos .wrap{padding-block:64px;display:flex;flex-direction:column;gap:28px}
+.platos h2{font-family:var(--display);font-weight:800;font-size:clamp(2.1rem,5.4vw,3.6rem);line-height:1;letter-spacing:-.02em}
+.platos .eyebrow{color:var(--albero-vivo)}
+.cab{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px}
+.tira{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(150px,42vw,215px);gap:14px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x mandatory}
+.plato{scroll-snap-align:start;display:flex;flex-direction:column;gap:10px;min-width:0}
+.plato .f{aspect-ratio:1;max-width:100%;border-radius:50%;overflow:hidden;background:rgba(255,255,255,.08);border:4px solid rgba(255,255,255,.12)}
+.plato img{width:100%;height:100%;object-fit:cover;display:block}
+.plato div{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.plato b{font-weight:700;font-size:1.05rem}
+.plato span{font-family:var(--display);font-weight:800;font-size:1.3rem;color:var(--albero-vivo);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* Paseo */
+.paseo .wrap{padding-block:64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;align-items:center}
+.paseo .txt{display:flex;flex-direction:column;gap:16px}
+.paseo h2{font-family:var(--display);font-weight:800;font-size:clamp(2.1rem,5vw,3.3rem);line-height:1;letter-spacing:-.02em;text-wrap:balance}
+.paseo p{color:var(--tinta-2);font-size:1.08rem}
+.fotos2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fotos2 img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:6px;display:block}
+.fotos2 img:first-child{margin-top:40px}
+
+/* Noche */
+.noche{position:relative;color:#fff;background:#0b1410;overflow:hidden}
+.noche img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.75}
+.noche::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,12,9,.85),rgba(6,12,9,.2))}
+.noche .wrap{position:relative;z-index:1;padding-block:110px;display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.noche h2{font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,7vw,5rem);line-height:.92;letter-spacing:-.03em;max-width:12ch}
+.noche p{max-width:30rem;font-size:1.1rem;opacity:.92}
+.noche .eyebrow{color:var(--albero-vivo)}
+
+/* Llevar + visita */
+.info .wrap{padding-block:64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.caja{background:var(--papel);border:1px solid var(--linea);border-radius:10px;padding:26px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;min-width:0}
+.caja h3{font-family:var(--display);font-weight:800;font-size:1.7rem;line-height:1}
+.caja p{color:var(--tinta-2)}
+.tel{font-family:var(--display);font-weight:800;font-size:clamp(2rem,6vw,2.6rem);letter-spacing:.01em;font-variant-numeric:tabular-nums;user-select:all;color:var(--albero)}
+.caja .fila{display:flex;flex-wrap:wrap;gap:8px}
+.caja .btn.c{padding:10px 18px}
+.caja .btn.o{background:transparent;color:var(--tinta);box-shadow:inset 0 0 0 2px var(--linea);padding:10px 18px}
+
+footer{background:var(--persiana);color:var(--sobre)}
+footer .wrap{padding-block:30px 36px;display:flex;flex-direction:column;gap:8px}
+footer strong{font-family:var(--display);font-weight:800;font-size:1.6rem}
+footer small{opacity:.7;font-size:.8rem}
+footer small a{opacity:1}
+
+@media (prefers-reduced-motion:no-preference){
+  .hero h1,.hero p,.hero .cta,.hero .eyebrow{animation:sube .9s cubic-bezier(.2,.7,.2,1) both}
+  .hero h1{animation-delay:.08s}.hero p{animation-delay:.2s}.hero .cta{animation-delay:.3s}
+  @keyframes sube{from{transform:translateY(18px);opacity:.001}to{transform:none;opacity:1}}
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#inicio">Bar <span>El Paseo</span></a>
+    <nav aria-label="Secciones">
+      <a href="#el-bar">El bar</a><a href="#carta">Carta</a><a href="#paseo">El paseo</a><a href="#pedidos">Pedidos</a>
+    </nav>
+    <a class="btn a" href="tel:+34624748836">Llamar</a>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <img src="img/l-hero.jpg" alt="Paseo de Santa Marina en Fernán Núñez, con cielo azul y las casas blancas alrededor">
+    <div class="wrap">
+      <span class="eyebrow">Paseo de Santa Marina · Fernán Núñez</span>
+      <h1>Bar<br>El Paseo</h1>
+      <p>Cañas bien frías, raciones caseras y bocadillos en plena plaza del pueblo. Siéntate en la terraza o llévatelo a casa.</p>
+      <div class="cta">
+        <a class="btn a" href="#carta">Ver la carta</a>
+        <a class="btn b" href="tel:+34624748836">Pedir para llevar · 624 748 836</a>
+      </div>
+    </div>
+  </section>
+  <div class="cenefa" aria-hidden="true"></div>
+
+  <section class="frase" id="el-bar">
+    <div class="wrap">
+      <h2>El bar de siempre, <em>en el paseo</em> de siempre.</h2>
+      <p>Desde el primer café de la mañana hasta la última caña de la noche. Cocina de aquí, precios de aquí y la mejor vista de Fernán Núñez.</p>
+    </div>
+    <div class="wrap" style="padding-bottom:64px">
+      <div class="momentos">
+        <article class="m m1"><img src="img/l-terraza.jpg" alt="Bancos y farolas del Paseo de Santa Marina" loading="lazy"><div><h3>La terraza</h3><p>Al sol en invierno y a la fresquita en verano, mirando al paseo.</p></div></article>
+        <article class="m m2"><img src="img/l-cana.jpg" alt="Caña de cerveza bien tirada" loading="lazy"><div><h3>Cañas y tapas</h3><p>Como tiene que ser.</p></div></article>
+        <article class="m m3"><img src="img/l-tapas.jpg" alt="Tapas variadas sobre la barra" loading="lazy"><div><h3>Raciones caseras</h3><p>Flamenquín, croquetas, rabo de toro…</p></div></article>
+        <article class="m m4"><img src="img/l-cafe.jpg" alt="Café con leche" loading="lazy"><div><h3>Desayunos</h3><p>Café y tostada para empezar el día.</p></div></article>
+        <article class="m m5"><img src="img/l-barra.jpg" alt="Barra de bar" loading="lazy"><div><h3>La barra</h3><p>Siempre con buen ambiente.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="platos" id="carta">
+    <div class="wrap">
+      <div class="cab">
+        <div style="display:flex;flex-direction:column;gap:8px"><span class="eyebrow">De nuestra carta</span><h2>Lo que más se pide</h2></div>
+        <a class="btn a" href="../carta-el-paseo/index.html" target="_blank" rel="noopener">Ver la carta completa</a>
+      </div>
+      <div class="tira" id="tira" tabindex="0" aria-label="Platos destacados"></div>
+    </div>
+  </section>
+
+  <section class="paseo" id="paseo">
+    <div class="wrap">
+      <div class="txt">
+        <span class="eyebrow">Dónde estamos</span>
+        <h2>En pleno Paseo de Santa Marina</h2>
+        <p>La plaza grande de Fernán Núñez, junto a la iglesia de Santa Marina. Un sitio para quedar, ver pasar a la gente y dejar que los niños corran mientras tú te tomas algo.</p>
+        <a class="btn c" href="https://www.google.com/maps/search/?api=1&query=Paseo+de+Santa+Marina+Fern%C3%A1n+N%C3%BA%C3%B1ez" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
+      <div class="fotos2">
+        <img src="img/l-paseo1.jpg" alt="Paseo de Santa Marina con su fuente y farolas al amanecer" loading="lazy">
+        <img src="img/l-paseo2.jpg" alt="Palacio Ducal de Fernán Núñez iluminado de noche" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="noche">
+    <img src="img/l-noche.jpg" alt="Iglesia de Santa Marina iluminada de noche entre palmeras" loading="lazy">
+    <div class="wrap">
+      <span class="eyebrow">Y cuando cae el sol</span>
+      <h2>La iglesia se enciende y la terraza se llena.</h2>
+      <p>Las noches de verano en el paseo no se cuentan, se viven. Reserva tu mesa llamando al bar.</p>
+      <a class="btn a" href="tel:+34624748836">Llamar al 624 748 836</a>
+    </div>
+  </section>
+
+  <section class="info" id="pedidos">
+    <div class="wrap">
+      <div class="caja">
+        <span class="eyebrow">Pedidos para llevar</span>
+        <h3>Llama y pasa a recogerlo</h3>
+        <div class="tel" id="tel">624 748 836</div>
+        <div class="fila">
+          <a class="btn c" href="tel:+34624748836">Llamar</a>
+          <button class="btn o" id="copiar" type="button">Copiar número</button>
+        </div>
+      </div>
+      <div class="caja">
+        <span class="eyebrow">Dirección</span>
+        <h3>Paseo de Santa Marina</h3>
+        <p>14520 Fernán Núñez, Córdoba</p>
+        <a class="btn o" href="https://www.google.com/maps/search/?api=1&query=Paseo+de+Santa+Marina+Fern%C3%A1n+N%C3%BA%C3%B1ez" target="_blank" rel="noopener">Abrir en Google Maps</a>
+      </div>
+      <div class="caja">
+        <span class="eyebrow">La carta</span>
+        <h3>Entrantes, raciones, bocadillos y hamburguesas</h3>
+        <p>Raciones desde 8 €, bocadillos desde 4 €.</p>
+        <a class="btn o" href="../carta-el-paseo/index.html" target="_blank" rel="noopener">Ver la carta</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong>Bar El Paseo</strong>
+    <span>Paseo de Santa Marina · Fernán Núñez (Córdoba) · 624 748 836</span>
+    <small>Fotos del Paseo de Santa Marina, la iglesia y el Palacio Ducal: CFA1877, <a href="https://commons.wikimedia.org/wiki/Category:Fern%C3%A1n_N%C3%BA%C3%B1ez" target="_blank" rel="noopener">Wikimedia Commons</a>, licencia CC BY-SA 4.0. Fotos de comida y bar: imágenes de muestra de Wikimedia Commons.</small>
+  </div>
+</footer>
+
+<script>
+const PLATOS = [
+  ["Flamenquín de lomo",9,"c-flamenquin"],["Croquetas de jamón",9,"c-croquetas"],["Calamares fritos",9,"c-calamares"],
+  ["Rabo de toro",12,"c-rabo"],["Patatas bravas",8,"c-bravas"],["Gambas",8,"c-gambas"],["Serranito",5,"c-serranito"],
+  ["Hamburguesa",4,"c-hamburguesa"],["Boquerones en vinagre",8,"c-boquerones"]
+];
+document.getElementById("tira").innerHTML = PLATOS.map(([n,p,f]) =>
+  `<figure class="plato" style="margin:0"><div class="f"><img src="img/${f}.jpg" alt="${n}" loading="lazy"></div><div><b>${n}</b><span>${p} €</span></div></figure>`).join("");
+const b = document.getElementById("copiar");
+b.addEventListener("click", () => {
+  const ok = () => { b.textContent = "Copiado"; setTimeout(() => b.textContent = "Copiar número", 1800); };
+  const sel = () => { const r = document.createRange(); r.selectNodeContents(document.getElementById("tel")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+  try { navigator.clipboard.writeText("624748836").then(ok, sel); } catch (e) { sel(); }
+});
+</script>
+
+</body>
+</html>
